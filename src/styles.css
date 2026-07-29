@@ -1,0 +1,215 @@
+:root {
+  color-scheme: light;
+  font-family: 'Trebuchet MS', 'Segoe UI', sans-serif;
+  background:
+    radial-gradient(circle at top left, rgba(255, 196, 112, 0.28), transparent 32%),
+    radial-gradient(circle at top right, rgba(109, 192, 255, 0.22), transparent 28%),
+    linear-gradient(180deg, #f7f7fb 0%, #edf1f7 100%);
+  color: #1f2937;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background: transparent;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  border: 0;
+  border-radius: 999px;
+  padding: 0.85rem 1.2rem;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease;
+}
+
+button:hover {
+  transform: translateY(-1px);
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
+  transform: none;
+}
+
+.shell {
+  width: min(960px, calc(100% - 2rem));
+  margin: 0 auto;
+  padding: 2rem 0 3rem;
+  display: grid;
+  gap: 1rem;
+}
+
+.panel {
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: 24px;
+  box-shadow: 0 20px 50px rgba(15, 23, 42, 0.08);
+  padding: 1.4rem;
+}
+
+.hero {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(232, 242, 255, 0.72));
+}
+
+.eyebrow {
+  margin: 0 0 0.4rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.72rem;
+  color: #6b7280;
+}
+
+h1,
+h2,
+p {
+  margin-top: 0;
+}
+
+h1 {
+  margin-bottom: 0.6rem;
+  font-size: clamp(2rem, 4vw, 3.4rem);
+  line-height: 1;
+}
+
+.subtitle {
+  margin-bottom: 0;
+  max-width: 62ch;
+  color: #4b5563;
+  line-height: 1.6;
+}
+
+.user-form {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.user-form label {
+  font-weight: 700;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.75rem;
+}
+
+input {
+  width: 100%;
+  border: 1px solid #d5dbe7;
+  border-radius: 18px;
+  padding: 0.9rem 1rem;
+  background: rgba(255, 255, 255, 0.95);
+  outline: none;
+}
+
+input:focus {
+  border-color: #7aa7ff;
+  box-shadow: 0 0 0 4px rgba(122, 167, 255, 0.18);
+}
+
+.form-panel button,
+.delete-button {
+  background: linear-gradient(135deg, #1f6feb, #4b91ff);
+  color: white;
+  font-weight: 700;
+  box-shadow: 0 10px 25px rgba(31, 111, 235, 0.24);
+}
+
+.error {
+  margin: 0.85rem 0 0;
+  color: #b91c1c;
+  font-weight: 700;
+}
+
+.list-panel {
+  display: grid;
+  gap: 1rem;
+}
+
+.list-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.list-header h2 {
+  margin-bottom: 0;
+}
+
+.list-header span {
+  color: #6b7280;
+}
+
+.user-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.user-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 1.1rem;
+  border-radius: 18px;
+  background: rgba(248, 250, 252, 0.95);
+  border: 1px solid rgba(148, 163, 184, 0.18);
+}
+
+.user-name {
+  margin: 0;
+  font-weight: 700;
+}
+
+.user-id,
+.empty-state {
+  margin-bottom: 0;
+  color: #64748b;
+}
+
+.empty-state {
+  padding: 0.5rem 0 0.2rem;
+}
+
+.delete-button {
+  background: linear-gradient(135deg, #ef4444, #f97316);
+  box-shadow: 0 10px 25px rgba(239, 68, 68, 0.2);
+}
+
+@media (max-width: 640px) {
+  .shell {
+    width: min(100% - 1rem, 960px);
+    padding-top: 1rem;
+  }
+
+  .panel {
+    padding: 1rem;
+  }
+
+  .form-row,
+  .user-card,
+  .list-header {
+    grid-template-columns: 1fr;
+    display: grid;
+  }
+
+  .user-card {
+    justify-items: start;
+  }
+}
