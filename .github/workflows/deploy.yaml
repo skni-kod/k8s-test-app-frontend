@@ -3,17 +3,17 @@ name: Build and Push Frontend
 on:
   # Uruchamianie automatyczne (np. po merge do main)
   push:
-    branches: [ "main" ]
-    
+    branches: ["main"]
+
   # Uruchamianie ręczne z poziomu interfejsu (UI) repozytorium frontendowego
   workflow_dispatch:
     inputs:
       custom_commit:
-        description: 'Podaj SHA commita (zostaw puste, by zbudować obecny)'
+        description: "Podaj SHA commita (zostaw puste, by zbudować obecny)"
         required: false
         type: string
       push_image:
-        description: 'Czy wysłać do GHCR?'
+        description: "Czy wysłać do GHCR?"
         required: true
         type: boolean
         default: true
@@ -21,17 +21,17 @@ on:
 jobs:
   call-central-docker-build:
     # Odwołanie do Twojego centralnego repozytorium
-    uses: skni-kod/skni-platform-workflows/.github/workflows/docker-image-creation.yaml@main
+    uses: skni-kod/skni-platform-workflows/.github/workflows/docker-image-creation.yaml@4ba6374c6eeffefb307d17f3c31e013dccbe52c5
     with:
-      # Jeśli deweloper wpisał własne SHA w workflow_dispatch, używamy go. 
+      # Jeśli deweloper wpisał własne SHA w workflow_dispatch, używamy go.
       # W przeciwnym wypadku domyślnie bierzemy SHA commita z kontekstu wywołania.
       commit_id: ${{ github.event.inputs.custom_commit || github.sha }}
-      
+
       # Nazwa wyciągnięta dynamicznie z nazwy obecnego repozytorium (np. iss-model-frontend)
       image_name: ${{ github.event.repository.name }}
-      
+
       # Zostanie nadpisane na false, jeśli deweloper odznaczy checkbox w UI
       push: ${{ github.event.inputs.push_image || true }}
-      
-      dockerfile_path: 'Dockerfile'
+
+      dockerfile_path: "Dockerfile"
       lint_dockerfile: true
